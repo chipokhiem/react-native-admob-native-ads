@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useRef } from "react";
-import { findNodeHandle, Image } from "react-native";
+import { findNodeHandle, Image, View } from "react-native";
 import { NativeAdContext } from "./context";
 
 const IconView = (props) => {
@@ -23,7 +23,7 @@ const IconView = (props) => {
 
   return (
     nativeAd?.icon !== "noicon" &&
-    nativeAd.icon && (
+    nativeAd.icon ? (
       <Image
         {...props}
         resizeMode="cover"
@@ -31,7 +31,7 @@ const IconView = (props) => {
         onLayout={_onLayout}
         source={{ uri: nativeAd.icon }}
       />
-    )
+    ) : <View />
   );
 };
 
